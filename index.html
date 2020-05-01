@@ -57,11 +57,13 @@
       function closed() {}
 
       function scanCode() {
-        liff.scanCode().then((result) => {
-          const stringifiedResult = JSON.stringify(result);
-          alert(stringifiedResult);
-          document.getElementById("scanCode").textContent = stringifiedResult;
-        });
+        if (liff.scanCode) {
+          liff.scanCode().then((result) => {
+            const stringifiedResult = JSON.stringify(result);
+            alert(stringifiedResult);
+            document.getElementById("scanCode").textContent = stringifiedResult;
+          });
+        }
       }
 
       function openWindow() {
