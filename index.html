@@ -56,11 +56,12 @@
 
       function closed() {}
 
-      async function scanCode() {
-        if (liff.scanCode) {
-          const result = await liff.scanCode();
-          document.getElementById("scanCode").append(result.value);
-        }
+      function scanCode() {
+        liff.scanCode().then((result) => {
+          const stringifiedResult = JSON.stringify(result);
+          alert(stringifiedResult);
+          document.getElementById("scanCode").textContent = stringifiedResult;
+        });
       }
 
       function openWindow() {
