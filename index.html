@@ -134,13 +134,13 @@
       async function main() {
         await liff.init({ liffId: "1654164368-LmQGP5pp" });
         document.getElementById("isLoggedIn").append(liff.isLoggedIn());
-        if (liff.isLoggedIn) {
+        if (liff.isLoggedIn()) {
           getEnvironment();
           getUserProfile();
           getContext();
           getFriendship();
         } else {
-          alert("Please Login with Line");
+          liff.login();
         }
         // createUniversalLink()
       }
