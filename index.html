@@ -71,8 +71,7 @@
                 toggleQrCodeReader();
               })
               .catch((err) => {
-                document.getElementById("scanCode").textContent =
-                  "scanCode failed!";
+                document.getElementById("scanCode").append("scanCode failed!");
               });
           }
         }
