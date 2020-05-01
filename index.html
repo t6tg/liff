@@ -36,7 +36,7 @@
     <button id="btnMsg" onclick="sendMsg()">Send Message</button>
     <button id="btnShare" onclick="shareMsg()">Share Target Picker</button>
     <button onclick="openWindow()">Open Window</button>
-    <button id="btnScanCode" onclick="scanCodes()">Scan Code</button>
+    <button id="btnScanCode" onclick="scanCode()">Scan Code</button>
     <button id="btnLogOut" onclick="logOut()">Log Out</button>
     <button id="btnClose" onclick="closed()">Close</button>
 
@@ -56,24 +56,13 @@
 
       function closed() {}
 
-      function scanCodes() {
-        if (!liff.isInClient()) {
-          sendAlertIfNotInClient();
+      function scanCode() {
+        if (liff.scanCode) {
+          liff.scanCode().then((result) => {
+            alert(result.value);
+          });
         } else {
-          if (liff.scanCode) {
-            liff
-              .scanCode()
-              .then((result) => {
-                const stringifiedResult = JSON.stringify(result);
-                document.getElementById(
-                  "scanCode"
-                ).textContent = stringifiedResult;
-                toggleQrCodeReader();
-              })
-              .catch((err) => {
-                document.getElementById("scanCode").append("scanCode failed!");
-              });
-          }
+          alert("Error");
         }
       }
 
