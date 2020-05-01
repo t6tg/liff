@@ -56,12 +56,13 @@
 
       function closed() {}
 
-      async function scanCode() {
+      function scanCode() {
         if (liff.scanCode) {
-          const result = await liff.scanCode();
-          document.getElementById("scanCode").append(result.value);
+          liff.scanCode().then((result) => {
+            alert(result.value);
+          });
         } else {
-          alert("Error");
+          alert("Error....");
         }
       }
 
