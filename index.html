@@ -60,6 +60,8 @@
         if (liff.scanCode) {
           const result = await liff.scanCode();
           document.getElementById("scanCode").append(result.value);
+        } else {
+          alert("Error");
         }
       }
 
