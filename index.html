@@ -56,14 +56,9 @@
 
       function closed() {}
 
-      function scanCode() {
-        if (liff.scanCode) {
-          liff.scanCode().then((result) => {
-            const stringifiedResult = JSON.stringify(result);
-            alert(stringifiedResult);
-            document.getElementById("scanCode").textContent = stringifiedResult;
-          });
-        }
+      async function scanCode() {
+        const result = await liff.scanCode();
+        document.getElementById("scanCode").append(result.value);
       }
 
       function openWindow() {
