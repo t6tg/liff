@@ -9,6 +9,7 @@
     <title>My LIFF app</title>
     <link rel="stylesheet" href="css/style.css" media="all" />
   </head>
+
   <body>
     <p id="os"><b>OS:</b></p>
     <p id="language"><b>Language:</b></p>
@@ -59,7 +60,19 @@
 
       function openWindow() {}
 
-      async function getFriendship() {}
+      async function getFriendship() {
+        const friend = await liff.getFriendship();
+        document.getElementById("friendship").append(friend.friendFlag);
+        if (!friend.friendFlag) {
+          if (
+            confirm(
+              "คุณยังไม่ได้เป็นเพื่ิอนกับ Chat Bot ของเรา จะเพิ่มเลยไหม..?"
+            )
+          ) {
+            window.location = "https://line.me/R/ti/p/@669mbysy";
+          }
+        }
+      }
 
       async function sendMsg() {
         if (liff.getContext().type !== "none") {
@@ -113,7 +126,7 @@
         getEnvironment();
         getUserProfile();
         getContext();
-        // getFriendship()
+        getFriendship();
         // createUniversalLink()
       }
       main();
