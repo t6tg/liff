@@ -56,19 +56,14 @@
 
       function closed() {}
 
-      function scanCode() {
-        if (liff.scanCode) {
-          liff.scanCode().then((result) => {
-            alert(result.value);
-          });
-        } else {
-          alert("Error");
-        }
+      async function scanCode() {
+        const result = await liff.scanCode();
+        document.getElementById("scanCode").append(result.value);
       }
 
       function openWindow() {
         liff.openWindow({
-          url: "https://kmutnb.ac.th",
+          url: "https://line.me",
           external: true,
         });
       }
